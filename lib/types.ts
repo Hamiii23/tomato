@@ -5,7 +5,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: string;
-  category: "Electronics" | "Fashion" | "Accessories" | "Home";
+  category: "Electronics" | "Fashion" | "Accessories" | "Home" | "Sports";
   rating: number;
   reviews: number;
   inStock: boolean;

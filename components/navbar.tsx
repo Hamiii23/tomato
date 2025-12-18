@@ -5,7 +5,14 @@ import { useCart } from "@/lib/cart-context";
 import { useState } from "react";
 import Link from "next/link";
 
-const categories = ["All", "Electronics", "Fashion", "Accessories", "Home"];
+const categories = [
+  "All",
+  "Electronics",
+  "Fashion",
+  "Accessories",
+  "Home",
+  "Sports",
+];
 
 interface NavbarProps {
   selectedCategory: string;
