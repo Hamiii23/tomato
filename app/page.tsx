@@ -38,7 +38,7 @@ export default function Home() {
             <div className="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/20 rounded-full px-4 py-2 mb-4">
               <Sparkles className="w-4 h-4 text-teal-400" />
               <span className="text-sm font-medium text-teal-400">
-                New Collection 2024
+                New Collection 2025
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
