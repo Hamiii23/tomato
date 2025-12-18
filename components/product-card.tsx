@@ -73,11 +73,11 @@ export default function ProductCard({
           <div className="space-y-1">
             {product.originalPrice && (
               <div className="text-xs text-slate-500 line-through">
-                ${product.originalPrice.toFixed(2)}
+                ₹{product.originalPrice.toFixed(2)}
               </div>
             )}
             <div className="text-xl font-bold text-teal-400">
-              ${product.price.toFixed(2)}
+              ₹{product.price.toFixed(2)}
             </div>
           </div>
 

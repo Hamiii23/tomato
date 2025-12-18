@@ -141,11 +141,11 @@ export default function ProductDetailModal({
                   <div className="flex items-end space-x-4">
                     {product.originalPrice && (
                       <div className="text-lg text-slate-500 line-through">
-                        ${product.originalPrice.toFixed(2)}
+                        ₹{product.originalPrice.toFixed(2)}
                       </div>
                     )}
                     <div className="text-4xl font-bold text-teal-400">
-                      ${product.price.toFixed(2)}
+                      ₹{product.price.toFixed(2)}
                     </div>
                   </div>
 

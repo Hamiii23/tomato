@@ -92,7 +92,7 @@ export default function CartDrawer() {
                         {item.name}
                       </h3>
                       <p className="text-teal-400 font-bold text-lg">
-                        ${item.price.toFixed(2)}
+                        ₹{item.price.toFixed(2)}
                       </p>
                     </div>
 
@@ -130,7 +130,7 @@ export default function CartDrawer() {
                     <div className="text-right">
                       <div className="text-xs text-slate-500">Subtotal</div>
                       <div className="font-bold text-white">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        ₹{(item.price * item.quantity).toFixed(2)}
                       </div>
                     </div>
                   </div>
