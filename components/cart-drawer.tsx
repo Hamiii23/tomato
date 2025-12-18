@@ -142,7 +142,7 @@ export default function CartDrawer() {
               <div className="space-y-2">
                 <div className="flex justify-between text-slate-400">
                   <span>Subtotal</span>
-                  <span>${totalPrice.toFixed(2)}</span>
+                  <span>₹{totalPrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-slate-400">
                   <span>Shipping</span>
@@ -151,7 +151,7 @@ export default function CartDrawer() {
                 <div className="border-t border-slate-800 pt-2 flex justify-between text-xl font-bold text-white">
                   <span>Total</span>
                   <span className="text-teal-400">
-                    ${totalPrice.toFixed(2)}
+                    ₹{totalPrice.toFixed(2)}
                   </span>
                 </div>
               </div>
