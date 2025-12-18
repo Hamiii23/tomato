@@ -15,12 +15,12 @@ import {
 } from "lucide-react";
 
 const dummyUser = {
-  name: "Alex Johnson",
-  email: "alex.johnson@example.com",
-  phone: "+1 (555) 123-4567",
+  name: "Irfan Habib",
+  email: "irfanhabib@example.com",
+  phone: "+91 5551 234 567",
   address: "123 Modern Street, Tech City, TC 12345",
   joinDate: "January 2023",
-  avatar: "AJ",
+  avatar: "IH",
 };
 
 const orderHistory = [
@@ -170,7 +170,7 @@ export default function ProfilePage() {
                       </div>
                       <div className="flex items-center justify-between sm:justify-end space-x-4">
                         <span className="text-xl font-bold text-teal-400">
-                          ${order.total.toFixed(2)}
+                          ₹{order.total.toFixed(2)}
                         </span>
                         <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all text-sm">
                           View Details
