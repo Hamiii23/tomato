@@ -30,7 +30,7 @@ export default function Navbar({
                 <Store className="w-6 h-6 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                ModernShop
+                Toomatoo
               </span>
             </Link>
 

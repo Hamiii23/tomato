@@ -7,7 +7,7 @@ import CartDrawer from "@/components/cart-drawer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ModernShop - Your Premium E-Commerce Store",
+  title: "Toomatoo - Your Premium E-Commerce Store",
   description:
     "Discover the latest products in electronics, fashion, accessories, and home decor.",
   openGraph: {
