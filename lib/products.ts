@@ -240,7 +240,7 @@ export const products: Product[] = [
       "Non-slip eco-friendly yoga mat with extra cushioning. Includes carrying strap for easy transport.",
     price: 3499,
     image:
-      "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3823203/pexels-photo-3823203.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Sports",
     rating: 4.7,
     reviews: 1456,
@@ -259,7 +259,7 @@ export const products: Product[] = [
       "Insulated water bottle keeps drinks cold for 24 hours or hot for 12 hours. Leak-proof and BPA-free.",
     price: 2199,
     image:
-      "https://images.pexels.com/photos/4173624/pexels-photo-4173624.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1188649/pexels-photo-1188649.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Sports",
     rating: 4.8,
     reviews: 2341,
@@ -279,7 +279,7 @@ export const products: Product[] = [
     price: 5499,
     originalPrice: 7999,
     image:
-      "https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3178938/pexels-photo-3178938.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Accessories",
     rating: 4.6,
     reviews: 1876,
@@ -298,7 +298,7 @@ export const products: Product[] = [
       "Comfortable ergonomic design reduces wrist strain. Silent clicks and adjustable DPI up to 2400.",
     price: 1899,
     image:
-      "https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Electronics",
     rating: 4.5,
     reviews: 1234,
@@ -317,7 +317,7 @@ export const products: Product[] = [
       "Set of 3 bamboo cutting boards in different sizes. Knife-friendly and naturally antimicrobial.",
     price: 2799,
     image:
-      "https://images.pexels.com/photos/6489095/pexels-photo-6489095.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/30910221/pexels-photo-30910221.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.7,
     reviews: 892,
@@ -336,7 +336,7 @@ export const products: Product[] = [
       "Ultrasonic essential oil diffuser with 7 LED color options. Automatic shut-off and whisper-quiet operation.",
     price: 3299,
     image:
-      "https://images.pexels.com/photos/4207892/pexels-photo-4207892.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/19201670/pexels-photo-19201670.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.8,
     reviews: 1567,
@@ -355,7 +355,7 @@ export const products: Product[] = [
       "Set of 5 resistance bands with different resistance levels. Perfect for home workouts and physical therapy.",
     price: 1499,
     image:
-      "https://images.pexels.com/photos/4162449/pexels-photo-4162449.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/5067745/pexels-photo-5067745.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Sports",
     rating: 4.6,
     reviews: 2103,
@@ -375,7 +375,7 @@ export const products: Product[] = [
     price: 4499,
     originalPrice: 5999,
     image:
-      "https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/20943579/pexels-photo-20943579.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Electronics",
     rating: 4.7,
     reviews: 3456,
@@ -394,7 +394,7 @@ export const products: Product[] = [
       "Classic canvas sneakers with cushioned insole. Perfect casual shoes for everyday comfort and style.",
     price: 3999,
     image:
-      "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Fashion",
     rating: 4.5,
     reviews: 1678,
@@ -413,7 +413,7 @@ export const products: Product[] = [
       "Adjustable bamboo cookbook stand with 5 viewing angles. Holds books, tablets, and phones.",
     price: 1699,
     image:
-      "https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/6373120/pexels-photo-6373120.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.6,
     reviews: 743,
@@ -433,7 +433,7 @@ export const products: Product[] = [
     price: 8999,
     originalPrice: 12999,
     image:
-      "https://images.pexels.com/photos/8000614/pexels-photo-8000614.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Electronics",
     rating: 4.8,
     reviews: 4521,
@@ -452,7 +452,7 @@ export const products: Product[] = [
       "Comfortable fleece-lined hoodie with kangaroo pocket. Perfect for casual wear and layering.",
     price: 4999,
     image:
-      "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/6995866/pexels-photo-6995866.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Fashion",
     rating: 4.7,
     reviews: 1923,
@@ -471,7 +471,7 @@ export const products: Product[] = [
       "High-capacity power bank with fast charging support. Charges multiple devices simultaneously.",
     price: 2999,
     image:
-      "https://images.pexels.com/photos/4195325/pexels-photo-4195325.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/11031423/pexels-photo-11031423.png?auto=compress&cs=tinysrgb&w=800",
     category: "Electronics",
     rating: 4.6,
     reviews: 2876,
@@ -490,7 +490,7 @@ export const products: Product[] = [
       "Contoured memory foam pillow provides optimal neck support. Breathable cover is machine washable.",
     price: 3799,
     image:
-      "https://images.pexels.com/photos/1034512/pexels-photo-1034512.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/18734695/pexels-photo-18734695.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.8,
     reviews: 1456,
@@ -509,7 +509,7 @@ export const products: Product[] = [
       "Precise digital scale with tare function. Measures up to 5kg with 1g accuracy. LCD display.",
     price: 1299,
     image:
-      "https://images.pexels.com/photos/6544376/pexels-photo-6544376.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/6303718/pexels-photo-6303718.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.5,
     reviews: 1089,
@@ -523,7 +523,7 @@ export const products: Product[] = [
       "Genuine leather belt with reversible design. Black on one side, brown on the other. Silver buckle.",
     price: 2999,
     image:
-      "https://images.pexels.com/photos/1261422/pexels-photo-1261422.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/31367058/pexels-photo-31367058.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Accessories",
     rating: 4.6,
     reviews: 876,
@@ -542,7 +542,7 @@ export const products: Product[] = [
       "Spacious duffle bag with separate shoe compartment and water bottle pocket. Durable water-resistant fabric.",
     price: 4499,
     image:
-      "https://images.pexels.com/photos/2762247/pexels-photo-2762247.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/9391902/pexels-photo-9391902.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Sports",
     rating: 4.7,
     reviews: 1654,
@@ -562,7 +562,7 @@ export const products: Product[] = [
     price: 3499,
     originalPrice: 4999,
     image:
-      "https://images.pexels.com/photos/5412262/pexels-photo-5412262.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/4195408/pexels-photo-4195408.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Electronics",
     rating: 4.7,
     reviews: 2234,
@@ -577,7 +577,7 @@ export const products: Product[] = [
     price: 8999,
     originalPrice: 12999,
     image:
-      "https://images.pexels.com/photos/4226860/pexels-photo-4226860.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/877226/frying-pan-cooking-pasta-tomato-877226.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Home",
     rating: 4.8,
     reviews: 1876,
@@ -596,7 +596,7 @@ export const products: Product[] = [
       "Comfortable stretch cotton chinos with modern slim fit. Perfect for both casual and semi-formal occasions.",
     price: 3999,
     image:
-      "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/30710089/pexels-photo-30710089.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Fashion",
     rating: 4.6,
     reviews: 1432,
