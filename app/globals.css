@@ -1,41 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color System */
-  --color-background: oklch(100% 0 0);
-  --color-foreground: oklch(20% 0 0);
+  /* Color System - Modern E-commerce Theme */
+  --color-background: oklch(98% 0.005 90);
+  --color-foreground: oklch(25% 0.02 270);
   --color-card: oklch(100% 0 0);
-  --color-card-foreground: oklch(20% 0 0);
+  --color-card-foreground: oklch(25% 0.02 270);
   --color-popover: oklch(100% 0 0);
-  --color-popover-foreground: oklch(20% 0 0);
-  --color-primary: oklch(30% 0 0);
+  --color-popover-foreground: oklch(25% 0.02 270);
+  --color-primary: oklch(55% 0.22 265);
   --color-primary-foreground: oklch(98% 0 0);
-  --color-secondary: oklch(96% 0 0);
-  --color-secondary-foreground: oklch(30% 0 0);
-  --color-muted: oklch(96% 0 0);
-  --color-muted-foreground: oklch(60% 0 0);
-  --color-accent: oklch(96% 0 0);
-  --color-accent-foreground: oklch(30% 0 0);
-  --color-destructive: oklch(62% 0.2 29);
+  --color-secondary: oklch(80% 0.08 160);
+  --color-secondary-foreground: oklch(25% 0.02 270);
+  --color-muted: oklch(95% 0.01 90);
+  --color-muted-foreground: oklch(50% 0.02 270);
+  --color-accent: oklch(75% 0.15 45);
+  --color-accent-foreground: oklch(98% 0 0);
+  --color-destructive: oklch(58% 0.22 25);
   --color-destructive-foreground: oklch(98% 0 0);
-  --color-border: oklch(90% 0 0);
-  --color-input: oklch(90% 0 0);
-  --color-ring: oklch(20% 0 0);
+  --color-border: oklch(88% 0.01 270);
+  --color-input: oklch(88% 0.01 270);
+  --color-ring: oklch(55% 0.22 265);
 
   /* Chart Colors */
-  --color-chart-1: oklch(68% 0.15 29);
-  --color-chart-2: oklch(55% 0.12 195);
-  --color-chart-3: oklch(42% 0.08 220);
-  --color-chart-4: oklch(75% 0.14 95);
-  --color-chart-5: oklch(72% 0.16 45);
+  --color-chart-1: oklch(65% 0.22 265);
+  --color-chart-2: oklch(70% 0.15 45);
+  --color-chart-3: oklch(75% 0.12 160);
+  --color-chart-4: oklch(60% 0.18 310);
+  --color-chart-5: oklch(68% 0.2 200);
 
   /* Border Radius */
-  --radius: 0.5rem;
-  --radius-lg: 0.5rem;
-  --radius-md: calc(0.5rem - 2px);
-  --radius-sm: calc(0.5rem - 4px);
+  --radius: 0.75rem;
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
 }
-
 @media (prefers-color-scheme: dark) {
   @theme {
     --color-background: oklch(20% 0 0);

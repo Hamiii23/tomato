@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import {
   User,
@@ -49,72 +49,104 @@ const orderHistory = [
 
 export default function ProfilePage() {
   const [selectedCategory] = useState("All");
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const dark = localStorage.getItem("darkMode") === "true";
+    setIsDark(dark);
+  }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-gray-50"}`}>
       <Navbar selectedCategory={selectedCategory} onCategoryChange={() => {}} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 space-y-6">
+            <div
+              className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 space-y-6 shadow-sm`}
+            >
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center mb-4 text-white text-3xl font-bold shadow-lg shadow-teal-500/30">
+                <div className="w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold mb-4">
                   {dummyUser.avatar}
                 </div>
-                <h2 className="text-2xl font-bold text-white">
+                <h2
+                  className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+                >
                   {dummyUser.name}
                 </h2>
-                <p className="text-slate-400 mt-1">Premium Member</p>
+                <p className="text-purple-600 mt-1 font-medium">
+                  Premium Member
+                </p>
               </div>
 
-              <div className="space-y-3 pt-4 border-t border-slate-700">
+              <div
+                className={`space-y-3 pt-4 border-t ${isDark ? "border-purple-800" : "border-purple-100"}`}
+              >
                 <div className="flex items-start space-x-3 text-sm">
-                  <Mail className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300">{dummyUser.email}</span>
+                  <Mail className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span className={isDark ? "text-gray-300" : "text-gray-700"}>
+                    {dummyUser.email}
+                  </span>
                 </div>
                 <div className="flex items-start space-x-3 text-sm">
-                  <Phone className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300">{dummyUser.phone}</span>
+                  <Phone className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span className={isDark ? "text-gray-300" : "text-gray-700"}>
+                    {dummyUser.phone}
+                  </span>
                 </div>
                 <div className="flex items-start space-x-3 text-sm">
-                  <MapPin className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300">{dummyUser.address}</span>
+                  <MapPin className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span className={isDark ? "text-gray-300" : "text-gray-700"}>
+                    {dummyUser.address}
+                  </span>
                 </div>
                 <div className="flex items-start space-x-3 text-sm">
-                  <Calendar className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300">
+                  <Calendar className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span className={isDark ? "text-gray-300" : "text-gray-700"}>
                     Member since {dummyUser.joinDate}
                   </span>
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white py-3 rounded-lg hover:from-teal-600 hover:to-cyan-700 transition-all shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 flex items-center justify-center space-x-2">
+              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 font-semibold">
                 <Settings className="w-5 h-5" />
                 <span>Edit Profile</span>
               </button>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
-              <h3 className="font-semibold text-white mb-4">Quick Actions</h3>
+            <div
+              className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 shadow-sm`}
+            >
+              <h3
+                className={`font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-4`}
+              >
+                Quick Actions
+              </h3>
               <div className="space-y-2">
-                <button className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                <button
+                  className={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? "hover:bg-gray-800 text-gray-300 hover:text-white" : "hover:bg-purple-50 text-gray-700 hover:text-purple-600"} transition-colors`}
+                >
                   <div className="flex items-center space-x-3">
-                    <Package className="w-5 h-5 text-teal-400" />
+                    <Package className="w-5 h-5 text-purple-600" />
                     <span>My Orders</span>
                   </div>
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <button className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                <button
+                  className={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? "hover:bg-gray-800 text-gray-300 hover:text-white" : "hover:bg-purple-50 text-gray-700 hover:text-purple-600"} transition-colors`}
+                >
                   <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-teal-400" />
+                    <Heart className="w-5 h-5 text-purple-600" />
                     <span>Wishlist</span>
                   </div>
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <button className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                <button
+                  className={`w-full flex items-center justify-between p-3 rounded-lg ${isDark ? "hover:bg-gray-800 text-gray-300 hover:text-white" : "hover:bg-purple-50 text-gray-700 hover:text-purple-600"} transition-colors`}
+                >
                   <div className="flex items-center space-x-3">
-                    <Settings className="w-5 h-5 text-teal-400" />
+                    <Settings className="w-5 h-5 text-purple-600" />
                     <span>Settings</span>
                   </div>
                   <ChevronRight className="w-5 h-5" />
@@ -124,10 +156,16 @@ export default function ProfilePage() {
           </div>
 
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+            <div
+              className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 shadow-sm`}
+            >
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-white">Order History</h3>
-                <button className="text-teal-400 hover:text-teal-300 text-sm font-medium">
+                <h3
+                  className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+                >
+                  Order History
+                </h3>
+                <button className="text-purple-600 hover:text-purple-700 text-sm font-medium transition-colors">
                   View All
                 </button>
               </div>
@@ -136,25 +174,33 @@ export default function ProfilePage() {
                 {orderHistory.map((order) => (
                   <div
                     key={order.id}
-                    className="bg-slate-700/30 border border-slate-700 rounded-lg p-4 hover:border-teal-500/30 transition-all"
+                    className={`${isDark ? "bg-gray-800 border-purple-800" : "bg-purple-50 border-purple-200"} border rounded-lg p-4 ${isDark ? "hover:border-purple-700" : "hover:border-purple-300"} transition-colors`}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0">
                       <div className="space-y-2">
                         <div className="flex items-center space-x-3">
-                          <span className="font-semibold text-white">
+                          <span
+                            className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
+                          >
                             {order.id}
                           </span>
                           <span
                             className={`px-2 py-1 text-xs font-medium rounded-full ${
                               order.status === "Delivered"
-                                ? "bg-green-500/20 text-green-400"
-                                : "bg-yellow-500/20 text-yellow-400"
+                                ? isDark
+                                  ? "bg-green-900/50 text-green-400"
+                                  : "bg-green-100 text-green-700"
+                                : isDark
+                                  ? "bg-yellow-900/50 text-yellow-400"
+                                  : "bg-yellow-100 text-yellow-700"
                             }`}
                           >
                             {order.status}
                           </span>
                         </div>
-                        <div className="flex items-center space-x-4 text-sm text-slate-400">
+                        <div
+                          className={`flex items-center space-x-4 text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                        >
                           <span className="flex items-center space-x-1">
                             <Calendar className="w-4 h-4" />
                             <span>{order.date}</span>
@@ -169,10 +215,12 @@ export default function ProfilePage() {
                         </div>
                       </div>
                       <div className="flex items-center justify-between sm:justify-end space-x-4">
-                        <span className="text-xl font-bold text-teal-400">
+                        <span className="text-xl font-bold text-purple-600">
                           ₹{order.total.toFixed(2)}
                         </span>
-                        <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all text-sm">
+                        <button
+                          className={`px-4 py-2 ${isDark ? "bg-gray-700 hover:bg-gray-600 border-purple-700 hover:border-purple-600" : "bg-white hover:bg-purple-50 border-purple-200 hover:border-purple-300"} border text-purple-600 rounded-lg transition-colors text-sm`}
+                        >
                           View Details
                         </button>
                       </div>
@@ -183,34 +231,52 @@ export default function ProfilePage() {
             </div>
 
             <div className="grid sm:grid-cols-3 gap-4">
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-teal-500/30 transition-all">
+              <div
+                className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 ${isDark ? "hover:border-purple-700" : "hover:border-purple-300"} transition-colors shadow-sm`}
+              >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="bg-gradient-to-br from-teal-500 to-cyan-600 p-2 rounded-lg">
+                  <div className="bg-purple-600 p-2 rounded-lg">
                     <Package className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="font-semibold text-white">Total Orders</h4>
+                  <h4
+                    className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
+                  >
+                    Total Orders
+                  </h4>
                 </div>
-                <p className="text-3xl font-bold text-teal-400">24</p>
+                <p className="text-3xl font-bold text-purple-600">24</p>
               </div>
 
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-teal-500/30 transition-all">
+              <div
+                className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 ${isDark ? "hover:border-purple-700" : "hover:border-purple-300"} transition-colors shadow-sm`}
+              >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="bg-gradient-to-br from-teal-500 to-cyan-600 p-2 rounded-lg">
+                  <div className="bg-purple-600 p-2 rounded-lg">
                     <Heart className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="font-semibold text-white">Wishlist</h4>
+                  <h4
+                    className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
+                  >
+                    Wishlist
+                  </h4>
                 </div>
-                <p className="text-3xl font-bold text-teal-400">8</p>
+                <p className="text-3xl font-bold text-purple-600">8</p>
               </div>
 
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-teal-500/30 transition-all">
+              <div
+                className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-xl p-6 ${isDark ? "hover:border-purple-700" : "hover:border-purple-300"} transition-colors shadow-sm`}
+              >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="bg-gradient-to-br from-teal-500 to-cyan-600 p-2 rounded-lg">
+                  <div className="bg-purple-600 p-2 rounded-lg">
                     <User className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="font-semibold text-white">Member</h4>
+                  <h4
+                    className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
+                  >
+                    Member
+                  </h4>
                 </div>
-                <p className="text-3xl font-bold text-teal-400">2Y</p>
+                <p className="text-3xl font-bold text-purple-600">2Y</p>
               </div>
             </div>
           </div>
