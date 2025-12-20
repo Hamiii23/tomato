@@ -4,7 +4,7 @@ import { Product } from "@/lib/types";
 import { useCart } from "@/lib/cart-context";
 import { X, ShoppingCart, Star, Check } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -16,12 +16,6 @@ export default function ProductDetailModal({
   onClose,
 }: ProductDetailModalProps) {
   const { addToCart } = useCart();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const dark = localStorage.getItem("darkMode") === "true";
-    setIsDark(dark);
-  }, []);
 
   useEffect(() => {
     if (product) {
@@ -50,20 +44,16 @@ export default function ProductDetailModal({
 
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
         <div
-          className={`${isDark ? "bg-gray-900 border-purple-800" : "bg-white border-purple-200"} border rounded-2xl shadow-2xl max-w-4xl w-full my-8`}
+          className="bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-800 rounded-2xl shadow-2xl max-w-4xl w-full my-8"
           onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className={`flex items-center justify-between p-6 border-b ${isDark ? "border-purple-800 bg-gray-800" : "border-purple-200 bg-purple-50"}`}
-          >
-            <h2
-              className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
-            >
+          <div className="flex items-center justify-between p-6 border-b border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-gray-800">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
               {product.name}
             </h2>
             <button
               onClick={onClose}
-              className={`p-2 ${isDark ? "hover:bg-gray-700 text-gray-400 hover:text-white" : "hover:bg-purple-100 text-gray-600 hover:text-gray-900"} rounded-lg transition-colors`}
+              className="p-2 hover:bg-purple-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -71,9 +61,7 @@ export default function ProductDetailModal({
 
           <div className="p-6">
             <div className="grid md:grid-cols-2 gap-8">
-              <div
-                className={`relative aspect-square rounded-xl overflow-hidden ${isDark ? "bg-gray-800 border-purple-800" : "bg-gray-100 border-purple-200"} border`}
-              >
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-purple-200 dark:border-purple-800">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -97,21 +85,15 @@ export default function ProductDetailModal({
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <span
-                      className={`px-3 py-1 ${isDark ? "bg-purple-900/50 text-purple-400" : "bg-purple-100 text-purple-700"} text-sm font-medium rounded-full`}
-                    >
+                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-400 text-sm font-medium rounded-full">
                       {product.category}
                     </span>
                     {product.inStock ? (
-                      <span
-                        className={`px-3 py-1 ${isDark ? "bg-green-900/50 text-green-400" : "bg-green-100 text-green-700"} text-sm font-medium rounded-full`}
-                      >
+                      <span className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-sm font-medium rounded-full">
                         In Stock
                       </span>
                     ) : (
-                      <span
-                        className={`px-3 py-1 ${isDark ? "bg-red-900/50 text-red-400" : "bg-red-100 text-red-700"} text-sm font-medium rounded-full`}
-                      >
+                      <span className="px-3 py-1 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
                         Out of Stock
                       </span>
                     )}
@@ -125,39 +107,31 @@ export default function ProductDetailModal({
                           className={`w-5 h-5 ${
                             i < Math.floor(product.rating)
                               ? "fill-yellow-500 text-yellow-500"
-                              : isDark
-                                ? "text-gray-700"
-                                : "text-gray-300"
+                              : "text-gray-300 dark:text-gray-700"
                           }`}
                         />
                       ))}
                     </div>
-                    <span
-                      className={`${isDark ? "text-gray-400" : "text-gray-600"} text-sm`}
-                    >
+                    <span className="text-gray-600 dark:text-gray-400 text-sm">
                       {product.rating} ({product.reviews} reviews)
                     </span>
                   </div>
                 </div>
 
-                <p
-                  className={`${isDark ? "text-gray-300" : "text-gray-700"} leading-relaxed`}
-                >
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   {product.description}
                 </p>
 
                 {product.features && product.features.length > 0 && (
                   <div className="space-y-3">
-                    <h3
-                      className={`font-semibold ${isDark ? "text-white" : "text-gray-900"} text-lg`}
-                    >
+                    <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
                       Key Features
                     </h3>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li
                           key={index}
-                          className={`flex items-start space-x-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
+                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300"
                         >
                           <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                           <span>{feature}</span>
@@ -167,14 +141,10 @@ export default function ProductDetailModal({
                   </div>
                 )}
 
-                <div
-                  className={`border-t ${isDark ? "border-purple-800" : "border-purple-200"} pt-6 space-y-4`}
-                >
+                <div className="border-t border-purple-200 dark:border-purple-800 pt-6 space-y-4">
                   <div className="flex items-end space-x-4">
                     {product.originalPrice && (
-                      <div
-                        className={`text-lg ${isDark ? "text-gray-500" : "text-gray-500"} line-through`}
-                      >
+                      <div className="text-lg text-gray-500 dark:text-gray-500 line-through">
                         ₹{product.originalPrice.toFixed(2)}
                       </div>
                     )}

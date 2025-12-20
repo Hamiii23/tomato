@@ -4,7 +4,6 @@ import { Product } from "@/lib/types";
 import { ShoppingCart, Star } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 
 interface ProductCardProps {
   product: Product;
@@ -16,12 +15,6 @@ export default function ProductCard({
   onViewDetails,
 }: ProductCardProps) {
   const { addToCart } = useCart();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const dark = localStorage.getItem("darkMode") === "true";
-    setIsDark(dark);
-  }, []);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -33,12 +26,8 @@ export default function ProductCard({
       onClick={() => onViewDetails(product)}
       className="group cursor-pointer"
     >
-      <div
-        className={`${isDark ? "bg-gray-800 border-purple-800" : "bg-white border-purple-200"} border rounded-xl overflow-hidden ${isDark ? "hover:border-purple-700" : "hover:border-purple-400"} transition-all duration-300 hover:shadow-lg`}
-      >
-        <div
-          className={`relative aspect-square overflow-hidden ${isDark ? "bg-gray-700" : "bg-gray-100"}`}
-        >
+      <div className="bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-xl overflow-hidden hover:border-purple-400 dark:hover:border-purple-700 transition-all duration-300 hover:shadow-lg">
+        <div className="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-700">
           <Image
             src={product.image}
             alt={product.name}
@@ -63,14 +52,10 @@ export default function ProductCard({
 
         <div className="p-4 space-y-3">
           <div className="space-y-1">
-            <h3
-              className={`font-semibold ${isDark ? "text-white group-hover:text-purple-400" : "text-gray-900 group-hover:text-purple-600"} transition-colors line-clamp-1`}
-            >
+            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-1">
               {product.name}
             </h3>
-            <p
-              className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"} line-clamp-2`}
-            >
+            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
               {product.description}
             </p>
           </div>
@@ -78,15 +63,11 @@ export default function ProductCard({
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
               <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-              <span
-                className={`text-sm font-medium ${isDark ? "text-white" : "text-gray-900"}`}
-              >
+              <span className="text-sm font-medium text-gray-900 dark:text-white">
                 {product.rating}
               </span>
             </div>
-            <span
-              className={`text-xs ${isDark ? "text-gray-500" : "text-gray-500"}`}
-            >
+            <span className="text-xs text-gray-500 dark:text-gray-500">
               ({product.reviews} reviews)
             </span>
           </div>
@@ -94,9 +75,7 @@ export default function ProductCard({
           <div className="flex items-center justify-between pt-2">
             <div className="space-y-1">
               {product.originalPrice && (
-                <div
-                  className={`text-xs ${isDark ? "text-gray-500" : "text-gray-500"} line-through`}
-                >
+                <div className="text-xs text-gray-500 dark:text-gray-500 line-through">
                   ₹{product.originalPrice.toFixed(2)}
                 </div>
               )}
