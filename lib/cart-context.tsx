@@ -20,6 +20,8 @@ interface CartContextType {
   isCartOpen: boolean;
   openCart: () => void;
   closeCart: () => void;
+  isDark: boolean;
+  toggleDarkMode: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,7 +29,9 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
+  // Load cart from localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
@@ -35,9 +39,38 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Save cart to localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
+
+  // Initialize dark mode from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+    setIsDark(shouldBeDark);
+    if (shouldBeDark) {
+      document.documentElement.style.colorScheme = "dark";
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setIsDark((prev) => {
+      const newValue = !prev;
+      if (newValue) {
+        document.documentElement.style.colorScheme = "dark";
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.style.colorScheme = "light";
+        localStorage.setItem("theme", "light");
+      }
+      return newValue;
+    });
+  };
 
   const addToCart = (product: Product) => {
     setItems((currentItems) => {
@@ -97,6 +130,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         isCartOpen,
         openCart,
         closeCart,
+        isDark,
+        toggleDarkMode,
       }}
     >
       {children}
