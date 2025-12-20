@@ -30,44 +30,94 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Handle mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Load cart from localStorage
   useEffect(() => {
+    if (!mounted) return;
+
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      setItems(JSON.parse(savedCart));
+      try {
+        setItems(JSON.parse(savedCart));
+      } catch (e) {
+        console.error("Failed to parse cart:", e);
+      }
     }
-  }, []);
+  }, [mounted]);
 
   // Save cart to localStorage
   useEffect(() => {
+    if (!mounted) return;
     localStorage.setItem("cart", JSON.stringify(items));
-  }, [items]);
+  }, [items, mounted]);
 
   // Initialize dark mode from localStorage
   useEffect(() => {
+    if (!mounted) return;
+
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
-    const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+    let shouldBeDark = false;
+
+    if (savedTheme === "dark") {
+      shouldBeDark = true;
+    } else if (savedTheme === "light") {
+      shouldBeDark = false;
+    } else {
+      // No saved preference, use system preference
+      shouldBeDark = prefersDark;
+    }
+
+    console.log("Initializing dark mode:", {
+      savedTheme,
+      prefersDark,
+      shouldBeDark,
+    });
 
     setIsDark(shouldBeDark);
+
     if (shouldBeDark) {
-      document.documentElement.style.colorScheme = "dark";
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
-  }, []);
+  }, [mounted]);
 
   const toggleDarkMode = () => {
     setIsDark((prev) => {
       const newValue = !prev;
+
+      console.log("Toggling dark mode:", { from: prev, to: newValue });
+
       if (newValue) {
-        document.documentElement.style.colorScheme = "dark";
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
         localStorage.setItem("theme", "dark");
+        console.log(
+          "Applied dark mode, classes:",
+          document.documentElement.className,
+        );
       } else {
-        document.documentElement.style.colorScheme = "light";
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
         localStorage.setItem("theme", "light");
+        console.log(
+          "Applied light mode, classes:",
+          document.documentElement.className,
+        );
       }
+
       return newValue;
     });
   };

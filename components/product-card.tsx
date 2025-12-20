@@ -26,8 +26,8 @@ export default function ProductCard({
       onClick={() => onViewDetails(product)}
       className="group cursor-pointer"
     >
-      <div className="bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-xl overflow-hidden hover:border-purple-400 dark:hover:border-purple-700 transition-all duration-300 hover:shadow-lg">
-        <div className="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-700">
+      <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-ring transition-all duration-300 hover:shadow-lg">
+        <div className="relative aspect-square overflow-hidden bg-muted">
           <Image
             src={product.image}
             alt={product.name}
@@ -36,14 +36,14 @@ export default function ProductCard({
           />
           {product.originalPrice && (
             <div className="absolute top-3 left-3">
-              <div className="bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+              <div className="bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
                 SALE
               </div>
             </div>
           )}
           {!product.inStock && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <span className="text-white font-semibold text-lg">
+            <div className="absolute inset-0 bg-background/50 flex items-center justify-center backdrop-blur-sm">
+              <span className="text-foreground font-semibold text-lg">
                 Out of Stock
               </span>
             </div>
@@ -52,22 +52,22 @@ export default function ProductCard({
 
         <div className="p-4 space-y-3">
           <div className="space-y-1">
-            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-1">
+            <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-1">
               {product.name}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+            <p className="text-sm text-muted-foreground line-clamp-2">
               {product.description}
             </p>
           </div>
 
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
-              <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-              <span className="text-sm font-medium text-gray-900 dark:text-white">
+              <Star className="w-4 h-4 fill-accent text-accent" />
+              <span className="text-sm font-medium text-card-foreground">
                 {product.rating}
               </span>
             </div>
-            <span className="text-xs text-gray-500 dark:text-gray-500">
+            <span className="text-xs text-muted-foreground">
               ({product.reviews} reviews)
             </span>
           </div>
@@ -75,11 +75,11 @@ export default function ProductCard({
           <div className="flex items-center justify-between pt-2">
             <div className="space-y-1">
               {product.originalPrice && (
-                <div className="text-xs text-gray-500 dark:text-gray-500 line-through">
+                <div className="text-xs text-muted-foreground line-through">
                   ₹{product.originalPrice.toFixed(2)}
                 </div>
               )}
-              <div className="text-xl font-bold text-purple-600">
+              <div className="text-xl font-bold text-primary">
                 ₹{product.price.toFixed(2)}
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function ProductCard({
             <button
               onClick={handleAddToCart}
               disabled={!product.inStock}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+              className="bg-primary hover:opacity-90 text-primary-foreground px-4 py-2 rounded-lg transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
             >
               <ShoppingCart className="w-4 h-4" />
               <span className="text-sm font-medium">Add</span>

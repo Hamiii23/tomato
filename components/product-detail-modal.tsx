@@ -38,22 +38,23 @@ export default function ProductDetailModal({
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/50 z-50 transition-opacity"
+        className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 transition-opacity"
         onClick={onClose}
       />
 
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
         <div
-          className="bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-800 rounded-2xl shadow-2xl max-w-4xl w-full my-8"
+          className="bg-card border border-border rounded-2xl shadow-2xl max-w-4xl w-full my-8"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between p-6 border-b border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-gray-800">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center justify-between p-6 border-b border-border bg-muted">
+            <h2 className="text-2xl font-bold text-card-foreground">
               {product.name}
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-purple-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors"
+              className="p-2 hover:bg-muted-foreground/10 text-muted-foreground hover:text-foreground rounded-lg transition-colors"
+              aria-label="Close"
             >
               <X className="w-6 h-6" />
             </button>
@@ -61,7 +62,7 @@ export default function ProductDetailModal({
 
           <div className="p-6">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-purple-200 dark:border-purple-800">
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-muted border border-border">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -70,7 +71,7 @@ export default function ProductDetailModal({
                 />
                 {product.originalPrice && (
                   <div className="absolute top-4 left-4">
-                    <div className="bg-purple-600 text-white text-sm font-bold px-3 py-1.5 rounded-full">
+                    <div className="bg-primary text-primary-foreground text-sm font-bold px-3 py-1.5 rounded-full">
                       {Math.round(
                         ((product.originalPrice - product.price) /
                           product.originalPrice) *
@@ -85,15 +86,15 @@ export default function ProductDetailModal({
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-400 text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full border border-border">
                       {product.category}
                     </span>
                     {product.inStock ? (
-                      <span className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-accent/20 text-accent text-sm font-medium rounded-full border border-accent/30">
                         In Stock
                       </span>
                     ) : (
-                      <span className="px-3 py-1 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-destructive/20 text-destructive text-sm font-medium rounded-full border border-destructive/30">
                         Out of Stock
                       </span>
                     )}
@@ -106,34 +107,34 @@ export default function ProductDetailModal({
                           key={i}
                           className={`w-5 h-5 ${
                             i < Math.floor(product.rating)
-                              ? "fill-yellow-500 text-yellow-500"
-                              : "text-gray-300 dark:text-gray-700"
+                              ? "fill-accent text-accent"
+                              : "text-muted-foreground/30"
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="text-gray-600 dark:text-gray-400 text-sm">
+                    <span className="text-muted-foreground text-sm">
                       {product.rating} ({product.reviews} reviews)
                     </span>
                   </div>
                 </div>
 
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-card-foreground leading-relaxed">
                   {product.description}
                 </p>
 
                 {product.features && product.features.length > 0 && (
                   <div className="space-y-3">
-                    <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
+                    <h3 className="font-semibold text-card-foreground text-lg">
                       Key Features
                     </h3>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li
                           key={index}
-                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300"
+                          className="flex items-start space-x-2 text-card-foreground"
                         >
-                          <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                          <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -141,14 +142,14 @@ export default function ProductDetailModal({
                   </div>
                 )}
 
-                <div className="border-t border-purple-200 dark:border-purple-800 pt-6 space-y-4">
+                <div className="border-t border-border pt-6 space-y-4">
                   <div className="flex items-end space-x-4">
                     {product.originalPrice && (
-                      <div className="text-lg text-gray-500 dark:text-gray-500 line-through">
+                      <div className="text-lg text-muted-foreground line-through">
                         ₹{product.originalPrice.toFixed(2)}
                       </div>
                     )}
-                    <div className="text-4xl font-bold text-purple-600">
+                    <div className="text-4xl font-bold text-primary">
                       ₹{product.price.toFixed(2)}
                     </div>
                   </div>
@@ -156,7 +157,7 @@ export default function ProductDetailModal({
                   <button
                     onClick={handleAddToCart}
                     disabled={!product.inStock}
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                    className="w-full bg-primary hover:opacity-90 text-primary-foreground py-4 rounded-lg font-semibold transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                   >
                     <ShoppingCart className="w-5 h-5" />
                     <span>Add to Cart</span>

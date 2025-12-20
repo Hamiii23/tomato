@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-slate-950 text-white`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
         <CartProvider>
           {children}
           <CartDrawer />
