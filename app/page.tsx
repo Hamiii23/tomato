@@ -6,12 +6,20 @@ import ProductCard from "@/components/product-card";
 import ProductDetailModal from "@/components/product-detail-modal";
 import { products } from "@/lib/products";
 import { Product } from "@/lib/types";
-import { Search, Sparkles, TrendingUp } from "lucide-react";
+import {
+  Search,
+  Sparkles,
+  TrendingUp,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showPriceFilter, setShowPriceFilter] = useState(false);
+  const [priceRange, setPriceRange] = useState([0, 50000]);
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
@@ -19,10 +27,16 @@ export default function Home() {
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+    return matchesCategory && matchesSearch && matchesPrice;
   });
 
   const featuredProducts = products.filter((p) => p.originalPrice);
+
+  const resetPriceFilter = () => {
+    setPriceRange([0, 50000]);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -58,9 +72,140 @@ export default function Home() {
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-card border border-border text-foreground placeholder-muted-foreground rounded-2xl pl-14 pr-6 py-4 focus:outline-none focus:ring-2 focus:ring-ring transition-all shadow-sm"
+                  className="w-full bg-card border border-border text-foreground placeholder-muted-foreground rounded-2xl pl-14 pr-20 py-4 focus:outline-none focus:ring-2 focus:ring-ring transition-all shadow-sm"
                 />
+                <button
+                  onClick={() => setShowPriceFilter(!showPriceFilter)}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-lg hover:bg-muted transition-colors"
+                  title="Filter by price"
+                >
+                  <SlidersHorizontal className="w-5 h-5 text-muted-foreground hover:text-foreground" />
+                </button>
               </div>
+
+              {showPriceFilter && (
+                <div className="mt-4 bg-card border border-border rounded-2xl p-6 shadow-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-semibold text-foreground">
+                      Price Range
+                    </h3>
+                    <button
+                      onClick={() => setShowPriceFilter(false)}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">
+                        Min: ₹{priceRange[0].toLocaleString("en-IN")}
+                      </span>
+                      <span className="text-muted-foreground">
+                        Max: ₹{priceRange[1].toLocaleString("en-IN")}
+                      </span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <input
+                        type="range"
+                        min="0"
+                        max="50000"
+                        step="500"
+                        value={priceRange[0]}
+                        onChange={(e) =>
+                          setPriceRange([
+                            Math.min(
+                              parseInt(e.target.value),
+                              priceRange[1] - 500,
+                            ),
+                            priceRange[1],
+                          ])
+                        }
+                        className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                      />
+                      <input
+                        type="range"
+                        min="0"
+                        max="50000"
+                        step="500"
+                        value={priceRange[1]}
+                        onChange={(e) =>
+                          setPriceRange([
+                            priceRange[0],
+                            Math.max(
+                              parseInt(e.target.value),
+                              priceRange[0] + 500,
+                            ),
+                          ])
+                        }
+                        className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">
+                          Min Price (₹)
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          max={priceRange[1] - 500}
+                          step="100"
+                          value={priceRange[0]}
+                          onChange={(e) =>
+                            setPriceRange([
+                              Math.max(
+                                0,
+                                Math.min(
+                                  parseInt(e.target.value) || 0,
+                                  priceRange[1] - 500,
+                                ),
+                              ),
+                              priceRange[1],
+                            ])
+                          }
+                          className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">
+                          Max Price (₹)
+                        </label>
+                        <input
+                          type="number"
+                          min={priceRange[0] + 500}
+                          max="50000"
+                          step="100"
+                          value={priceRange[1]}
+                          onChange={(e) =>
+                            setPriceRange([
+                              priceRange[0],
+                              Math.min(
+                                50000,
+                                Math.max(
+                                  parseInt(e.target.value) || 50000,
+                                  priceRange[0] + 500,
+                                ),
+                              ),
+                            ])
+                          }
+                          className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={resetPriceFilter}
+                      className="w-full mt-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Reset Price Filter
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">

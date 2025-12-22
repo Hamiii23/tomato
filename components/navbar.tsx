@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCart, User, Menu, X, Store, Moon, Sun } from "lucide-react";
+import { ShoppingCart, User, Menu, X, Store } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import { useState } from "react";
 import Link from "next/link";
@@ -23,7 +23,7 @@ export default function Navbar({
   selectedCategory,
   onCategoryChange,
 }: NavbarProps) {
-  const { totalItems, openCart, isDark, toggleDarkMode } = useCart();
+  const { totalItems, openCart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -57,18 +57,6 @@ export default function Navbar({
           </div>
 
           <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-
             <button
               onClick={openCart}
               className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
